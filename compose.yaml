@@ -17,6 +17,7 @@ services:
       - db-password
     volumes:
       - ./backend/src:/usr/src/app/src
+    profiles: [ "dev", "prod" ]
   db:
     image: postgres
     restart: always
@@ -31,10 +32,12 @@ services:
     expose:
       - 5432
     healthcheck:
-      test: ["CMD", "pg_isready"]
+      test: [ "CMD", "pg_isready" ]
       interval: 10s
       timeout: 5s
       retries: 5
+    profiles: [ "dev", "prod" ]
+
 volumes:
   db-data-vol:
 secrets:
