@@ -10,7 +10,7 @@ async function insertWord(req, res) {
     if (validInput(word)) {
         try {
             await service.insertWord(word);
-            res.status(200).send('Word inserted!');
+            res.status(200).send({ msg: 'Word inserted!' });
         } catch (error) {
             res.status(500).send(`An internal error occurred: ${error}`);
         }
@@ -46,7 +46,8 @@ async function deleteWord(req, res) {
 async function listAllWords(req, res) {
     try {
         const words = await service.listAllWords();
-        res.status(200).json({ words });
+        const result = words.map(w => w.word);
+        res.status(200).json(result);
     } catch (error) {
         res.status(500).send(`Error fetching words: ${error}`);
     }
