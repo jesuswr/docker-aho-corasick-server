@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 function WordInsert() {
-    const backendHost = process.env.REACT_APP_BACKENsD_HOST || "localhost";
-    const backendPort = process.env.REACT_APP_BACKEND_PORT || "8000";
+    const backendHost = process.env.REACT_APP_BACKEND_HOST;
+    const backendPort = process.env.REACT_APP_BACKEND_PORT;
 
     const [message, setMessage] = useState("");
     const insertWord = async (word) => {

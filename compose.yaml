@@ -6,7 +6,8 @@ services:
       - "3000:3000"
     environment:
       REACT_APP_BACKEND_PORT: 8000
-      REACT_APP_BACKEND_HOST: backend
+      # REACT_APP_BACKEND_HOST: backend # this didn't work because the browser doesn't know what backend is
+      REACT_APP_BACKEND_HOST: localhost
     profiles: [ "dev", "prod" ]
     volumes:
       - ./frontend/src:/usr/src/app/src

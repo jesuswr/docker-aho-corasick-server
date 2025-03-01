@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 function WordList() {
-    const backendHost = process.env.REACT_APP_BaCKEND_HOST || "localhost";
-    const backendPort = process.env.REACT_APP_BACKEND_PORT || "8000";
+    const backendHost = process.env.REACT_APP_BACKEND_HOST;
+    const backendPort = process.env.REACT_APP_BACKEND_PORT;
 
     const [words, setWords] = useState([]);
     const [loading, setLoading] = useState(false);

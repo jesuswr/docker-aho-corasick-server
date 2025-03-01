@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 function GetMatches() {
-    const backendHost = process.env.REACT_APP_BACKEND_dasHOST || "localhost";
-    const backendPort = process.env.REACT_APP_BACKEND_PORT || "8000";
+    const backendHost = process.env.REACT_APP_BACKEND_HOST;
+    const backendPort = process.env.REACT_APP_BACKEND_PORT;
 
     const [queryText, setQueryText] = useState("");
     const [result, setResult] = useState(null);
@@ -27,7 +27,7 @@ function GetMatches() {
             if (!response.ok) throw new Error("Query failed.");
 
             const data = await response.json();
-            data.result.sort((a, b) => a.counter > b.counter);
+            data.result.sort((a, b) => b.counter - a.counter);
             setResult(data.result || []);
             setMessage("Query successful!");
         } catch (error) {
